@@ -1,7 +1,12 @@
 aid: foot-locker
-url: https://raw.githubusercontent.com/api-evangelist/foot-locker/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/foot-locker/refs/heads/main/apis.yml
 modified: '2026-03-21'
 apis: []
 common:
   - type: Website
     url: https://www.foot-locker.com
+description: >-
+  Foot Locker is a global retailer of athletic footwear and apparel, operating stores
+  under banners including Foot Locker, Kids Foot Locker, Lady Foot Locker, Champs
+  Sports, Eastbay, and Footaction.
