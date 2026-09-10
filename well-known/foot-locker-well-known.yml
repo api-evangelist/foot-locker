@@ -1,0 +1,158 @@
+generated: '2026-09-10'
+method: probed
+source: >-
+  Direct HTTPS probes of the RFC 8615 well-known paths on every host this record
+  knows — the storefront (www.footlocker.com), the corporate site
+  (www.footlocker-inc.com), the careers host (careers.footlocker.com) and the
+  investor-relations host (investors.footlocker-inc.com).
+note: >-
+  NO WELL-KNOWN DOCUMENT IS SERVED. Every named path returned 404 on the
+  storefront, the corporate site and the careers host; the investor-relations
+  host answered 403 to every path (an Akamai edge policy, not a document).
+  Because nothing returned a real document, this repo deliberately carries NO
+  `WellKnown` and NO `SecurityTxt` pointer in apis.yml — the probe records an
+  absence, and an absence must not be published as a presence.
+  The storefront additionally answers HTTP 200 with a React/AEM single-page
+  shell for EVERY unrouted path (/openapi.json, /swagger.json, /llms.txt and any
+  invented slug all return ~600KB of HTML). Those 200s are soft-404s, not
+  documents. The shell's own embedded Redux state exposes the discriminator:
+  an unrouted path carries `"unauthored":{"<path>":true}` while a real authored
+  page carries `false`. Any probe of footlocker.com that reads status codes
+  alone will award this provider credit it has not earned.
+
+hosts:
+  - host: www.footlocker.com
+    note: >-
+      Storefront (Fastly + AEM/React SPA). The five named paths are hard 404s
+      from the origin; unrouted non-well-known paths are soft-200 SPA shells.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+
+  - host: www.footlocker-inc.com
+    note: Corporate site (Adobe Experience Manager, server-rendered). Apache 404s.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+
+  - host: careers.footlocker.com
+    note: >-
+      Careers host, CNAME to career.page (a third-party ATS). Not a Foot Locker
+      origin; probed for completeness only.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+
+  - host: investors.footlocker-inc.com
+    note: >-
+      Investor-relations host (Q4 Inc. / gcs-web behind Akamai). Answers 403 to
+      every automated request, including the site root, so these are edge
+      refusals rather than evidence about what the host serves.
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 403
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+        file: null
+      - path: /.well-known/api-catalog
+        status: 403
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 403
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 403
+        file: null
+      - path: /.well-known/agent.json
+        status: 403
+        file: null
+
+also_probed:
+  - host: api.footlocker.com
+    result: >-
+      DANGLING CNAME. api.footlocker.com resolves to footlocker-prod.apigee.net,
+      which is itself NXDOMAIN — the Apigee edge that once fronted this hostname
+      has been deprovisioned while the CNAME was left in the footlocker.com zone.
+      No probe of any path is possible; connection fails at DNS resolution.
+    status: null
+  - host: www.foot-locker.com
+    result: >-
+      NXDOMAIN. The hyphenated hostname carried in this record's Website and
+      AffiliateProgram pointers no longer resolves; the live storefront is
+      www.footlocker.com. Both pointers were repaired in this pass.
+    status: null
+  - host: corporate.footlocker.com
+    result: >-
+      NXDOMAIN. The corporate site now lives at www.footlocker-inc.com; the
+      CorporateSite pointer was repaired in this pass.
+    status: null
+
+agent_card:
+  found: false
+  note: >-
+    /.well-known/agent-card.json and the legacy /.well-known/agent.json were
+    probed on all four live hosts and returned 404 (or 403 at the IR host). No
+    A2A agent card is published, so no a2a/ artifact and no AgentCard pointer
+    were written — an agent card asserts the provider serves it and may never be
+    authored on their behalf.

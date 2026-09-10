@@ -1,13 +1,17 @@
 aid: foot-locker
 name: Foot Locker
 description: >-
-  Foot Locker is a global retailer of athletic footwear and apparel, operating
-  stores under banners including Foot Locker, Kids Foot Locker, Lady Foot
-  Locker, Champs Sports, Eastbay, and Footaction. Foot Locker does not
-  publish a public developer portal or open API. Integrations with Foot
-  Locker (loyalty, gift cards, retail media, e-commerce affiliate, supplier
-  EDI) are arranged through partner programs and require commercial
-  agreements.
+  Foot Locker, Inc. is a global retailer of athletic footwear and apparel,
+  operating the Foot Locker, Kids Foot Locker, Champs Sports, WSS and atmos
+  banners across North America, Europe, Asia and Australia. DICK'S Sporting
+  Goods completed its acquisition of Foot Locker, Inc. on September 8, 2025
+  and continues to operate the Foot Locker brand suite. Foot Locker publishes
+  no public developer portal, API reference or machine-readable contract.
+  Trading-partner integration runs through third-party host platforms rather
+  than a first-party developer site: supplier inventory and dropship through
+  CommerceHub Dsco, and the Storefronts creator/affiliate program through
+  impact.com, each requiring a commercial agreement. The former
+  api.footlocker.com Apigee gateway no longer resolves.
 type: Index
 deliveryModel:
   model: unknown
@@ -34,7 +38,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/foot-locker.png
 access: Internal
 created: '2026-03-21'
-modified: '2026-04-28'
+modified: '2026-09-10'
 position: Producing
 tags:
   - Fortune 500
@@ -42,6 +46,8 @@ tags:
   - Footwear
   - Apparel
   - E-Commerce
+  - Sneakers
+  - Omnichannel
 url: >-
   https://raw.githubusercontent.com/api-evangelist/foot-locker/refs/heads/main/apis.yml
 specificationVersion: '0.23'
@@ -49,20 +55,47 @@ apis: []
 common:
   - type: DomainSecurity
     url: security/foot-locker-domain-security.yml
+  - type: LLMsTxt
+    url: llms/foot-locker-llms.txt
   - type: GitHubOrganization
     url: https://github.com/footlocker
   - type: LinkedIn
     url: https://www.linkedin.com/company/footlocker
   - type: Website
-    url: https://www.foot-locker.com
+    url: https://www.footlocker.com/
   - type: CorporateSite
-    url: https://corporate.footlocker.com/
+    url: https://www.footlocker-inc.com/
   - type: InvestorRelations
     url: https://investors.footlocker-inc.com/
   - type: Careers
     url: https://careers.footlocker.com/
+  - type: TermsOfService
+    url: https://www.footlocker.com/help/terms-of-use.html
+  - type: PrivacyPolicy
+    url: https://www.footlocker.com/help/privacy-statement.html
   - type: AffiliateProgram
-    url: https://www.foot-locker.com/help-center/affiliate-program.html
+    url: https://www.footlocker.com/affiliates.html
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-10'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v3
+x-coverage:
+  state: gated
+  reason: marketplace-only
+  detail: >-
+    Foot Locker publishes no developer site of its own — its one real API, the
+    Foot Locker/Eastbay supplier inventory feed, is documented inside
+    CommerceHub's Dsco platform, whose docs host answers HTTP 403 behind a TLS
+    certificate that expired in December 2025.
+  evidence:
+    - url: https://gandalf.dsco.io/platform_content/fleast-updatinginventory-api/
+      status: 403
+    - url: https://www.footlocker.com/.well-known/api-catalog
+      status: 404
+    - url: https://www.footlocker.com/openapi.json
+      status: 200
+  checked: '2026-09-10'

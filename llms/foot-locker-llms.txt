@@ -1,0 +1,80 @@
+# Foot Locker
+
+> Foot Locker, Inc. is a global retailer of athletic footwear and apparel, operating the Foot Locker, Kids Foot Locker, Champs Sports, WSS and atmos banners across North America, Europe, Asia and Australia. DICK'S Sporting Goods completed its acquisition of Foot Locker, Inc. on September 8, 2025 and continues to operate the Foot Locker brand suite.
+
+<!--
+generated: 2026-09-10
+method: generated
+source: all/foot-locker/apis.yml plus live probes recorded in well-known/foot-locker-well-known.yml and security/foot-locker-domain-security.yml
+note: This file was written by the API Evangelist enrichment pipeline. Foot Locker
+      does not serve an llms.txt of its own — https://www.footlocker.com/llms.txt
+      returns HTTP 200 with the storefront's single-page-app shell, not a document.
+-->
+
+## What an agent can and cannot do here
+
+**There is no Foot Locker API.** Foot Locker publishes no developer portal, no API
+reference, no OpenAPI/AsyncAPI/GraphQL contract, no SDK, no CLI and no MCP server.
+Do not attempt to construct calls against footlocker.com — the storefront is a
+consumer commerce site, its `robots.txt` disallows `/account/*`, `/cart`,
+`/checkout*` and `/api/potential-points`, and the only host that ever looked like an
+API front door, `api.footlocker.com`, is now a dangling CNAME to a deprovisioned
+Apigee edge (`footlocker-prod.apigee.net`, NXDOMAIN).
+
+Integration with Foot Locker is a commercial relationship, not a self-serve one, and
+the contracts live on third-party host platforms rather than on a Foot Locker
+developer site:
+
+- **Supplier inventory / dropship** — handled through CommerceHub's Dsco platform.
+  The Foot Locker / Eastbay inventory API is documented inside Dsco's own docs host
+  (`gandalf.dsco.io`), which itself answers HTTP 403 behind an expired TLS
+  certificate. OAuth tokens are issued by Dsco onboarding support, not by Foot Locker.
+- **Creator / affiliate** — the Foot Locker Storefronts creator program runs on
+  impact.com. Affiliate enrolment starts at https://www.footlocker.com/affiliates.html.
+- **Retail media** — an in-house retail media network was in stand-up as of 2026; no
+  public ad API or spec is published.
+
+## Storefront probing caveat (important)
+
+`www.footlocker.com` returns **HTTP 200 for every unrouted path**. `/openapi.json`,
+`/swagger.json`, `/llms.txt`, `/security/responsible-disclosure` and any invented
+slug all return roughly 600KB of React/AEM shell HTML. A status code alone will
+mislead you. The shell's embedded Redux state carries the discriminator:
+
+    "unauthored":{"/the/path":true}     -> soft-404, the page does not exist
+    "unauthored":{"/the/path":false}    -> a real, authored page
+
+## Verified pages
+
+- [Foot Locker storefront](https://www.footlocker.com/): the consumer commerce site.
+- [Foot Locker, Inc. corporate](https://www.footlocker-inc.com/): server-rendered AEM corporate site; brands, about, contact.
+- [Help centre](https://www.footlocker.com/help.html): consumer support articles — orders, shipping, returns, gift cards.
+- [Affiliates](https://www.footlocker.com/affiliates.html): affiliate/creator program entry point.
+- [About FLX](https://www.footlocker.com/about-flx.html): the FLX Rewards loyalty program, shared across Foot Locker, Kids Foot Locker and Champs Sports. No member-facing API.
+- [FLX program terms](https://www.footlocker.com/help/flx-terms.html)
+- [Terms of Use](https://www.footlocker.com/help/terms-of-use.html)
+- [Privacy Statement](https://www.footlocker.com/help/privacy-statement.html)
+- [Corporate privacy statement](https://www.footlocker-inc.com/content/flinc-aem-site/en/privacy-statement.html)
+- [Accessibility Statement](https://www.footlocker.com/accessibility-statement.html)
+- [Investor relations](https://investors.footlocker-inc.com/): Q4/gcs-web host; refuses automated requests with HTTP 403.
+- [Careers](https://careers.footlocker.com/): runs on a third-party ATS (career.page).
+- [GitHub organization](https://github.com/footlocker): exists ("Foot Locker Inc.", created 2020) but publishes **zero** public repositories.
+
+## Discovery documents
+
+None. `/.well-known/security.txt`, `/.well-known/openid-configuration`,
+`/.well-known/oauth-authorization-server`, `/.well-known/api-catalog`,
+`/.well-known/ai-plugin.json`, `/.well-known/agent-card.json` and the legacy
+`/.well-known/agent.json` were probed on www.footlocker.com, www.footlocker-inc.com,
+careers.footlocker.com and investors.footlocker-inc.com. Every one returned 404
+(403 at the investor-relations host). There is no A2A agent card, no OAuth metadata,
+no API catalog and no security.txt. Full probe log:
+`well-known/foot-locker-well-known.yml`.
+
+## Optional
+
+- [Champs Sports](https://www.champssports.com/) — Foot Locker banner, same SPA storefront, no API.
+- [Kids Foot Locker](https://www.kidsfootlocker.com/) — Foot Locker banner, same SPA storefront, no API.
+- [WSS](https://www.shopwss.com/) — Foot Locker banner.
+- [atmos](https://www.atmos-tokyo.com/) — Foot Locker banner.
+- [DICK'S Sporting Goods investor relations](https://investors.dicks.com/) — the parent company since September 8, 2025.
