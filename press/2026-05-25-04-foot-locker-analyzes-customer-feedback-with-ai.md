@@ -1,7 +1,9 @@
 ---
 title: Foot Locker analyzes customer feedback with AI
 url: https://chainstoreage.com/foot-locker-analyzes-customer-feedback-ai
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Foot Locker" press release artificial intelligence'
 position: 4
 source: serpapi-google

@@ -1,7 +1,9 @@
 ---
 title: How Foot Locker Stepped Into a Gen AI Marketing Journey
 url: https://www.smartly.io/resources/how-foot-locker-stepped-into-a-gen-ai-marketing-journey
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Foot Locker" press release artificial intelligence'
 position: 2
 source: serpapi-google

@@ -1,7 +1,9 @@
 ---
 title: Foot Locker – InMoment
 url: https://inmoment.com/customer-stories/foot-locker-uses-ai-npl-text-analytics/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Foot Locker" press release artificial intelligence'
 position: 3
 source: serpapi-google

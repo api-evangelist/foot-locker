@@ -1,7 +1,9 @@
 ---
 title: DICK'S Sporting Goods Completes Acquisition of Foot Locker
 url: https://www.prnewswire.com/news-releases/dicks-sporting-goods-completes-acquisition-of-foot-locker-302548690.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Foot Locker" press release artificial intelligence'
 position: 5
 source: serpapi-google
