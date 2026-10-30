@@ -1,4 +1,4 @@
-# Foot Locker (foot-locker)
+# Foot Locker
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,47 +64,83 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Foot Locker is a Fortune 500 global retailer of athletic footwear and apparel,
-operating stores under banners including Foot Locker, Kids Foot Locker, Lady
-Foot Locker, Champs Sports, Eastbay, and Footaction. Foot Locker does not
-publish a public developer portal or open API. Integrations with Foot Locker
-(loyalty, gift cards, retail media, e-commerce affiliate, supplier EDI) are
-arranged through partner programs and require commercial agreements.
+Foot Locker, Inc. is a global retailer of athletic footwear and apparel, operating the Foot Locker, Kids Foot Locker, Champs Sports, WSS and atmos banners across North America, Europe, Asia and Australia. DICK'S Sporting Goods completed its acquisition of Foot Locker, Inc. on September 8, 2025 and continues to operate the Foot Locker brand suite. Foot Locker publishes no public developer portal, API reference or machine-readable contract. Trading-partner integration runs through third-party host platforms rather than a first-party developer site: supplier inventory and dropship through CommerceHub Dsco, and the Storefronts creator/affiliate program through impact.com, each requiring a commercial agreement. The former api.footlocker.com Apigee gateway no longer resolves.
 
-This repository captures the available public-facing properties and serves as
-a placeholder for any future machine-readable API artifacts.
+**Areas:** Fortune 500 · Retail · Footwear · Apparel · E-Commerce · Sneakers · Omnichannel · Fashion
 
-**APIs.json:** [apis.yml](https://raw.githubusercontent.com/api-evangelist/foot-locker/refs/heads/main/apis.yml)
+## Foot Locker on APIs.io
 
-## Scope
+Everything profiled for Foot Locker is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/foot-locker/](https://apis.io/providers/foot-locker/)** — or go straight to one of the APIs or properties below.
 
-- **Type:** Index
-- **Position:** Provider
-- **Access:** Internal
+### Published properties
 
-## Tags
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Fortune 500, Retail, Footwear, Apparel, E-Commerce
+#### Security (1)
 
-## APIs
+Authentication, trust centre, and vulnerability disclosure.
 
-No public APIs have been documented. Foot Locker integrations are arranged
-through partner channels:
+- [Foot Locker Domain Security](https://apis.io/security/foot-locker/foot-locker-domain-security/)
 
-- Affiliate program (commerce links / commissions)
-- Retail media and advertising partnerships
-- Loyalty (FLX) and gift card integrations via partner agreements
-- Supplier and merchandising EDI
+## Where to find this API
 
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Website](https://www.foot-locker.com)
-- [Corporate Site](https://corporate.footlocker.com/)
-- [Investor Relations](https://investors.footlocker-inc.com/)
-- [Careers](https://careers.footlocker.com/)
-- [Affiliate Program](https://www.foot-locker.com/help-center/affiliate-program.html)
+- [Website](https://www.footlocker.com/)
+- [Blog](https://www.footlocker.com/blog/)
+- [Terms of service](https://www.footlocker.com/help/terms-of-use.html)
+- [Privacy policy](https://www.footlocker.com/help/privacy-statement.html)
+- [GitHub](https://github.com/footlocker)
 
-## Maintainers
+## API Evangelist rating
 
-- **FN:** Kin Lane
-- **Email:** kin@apievangelist.com
+**Kin Score 10.4** — minimal · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 55.4 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 2.4 |
+| Access clarity | 21.1 |
+
+**Agent readiness 0.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 13.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/foot-locker/](https://apis.io/providers/foot-locker/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Foot Locker: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/foot-locker/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
